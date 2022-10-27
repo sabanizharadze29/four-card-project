@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Card from "./components/Card";
+import data from "./data";
 function App() {
+  const cards = data.map((card) => {
+    const { id, borderTopColor, description, title, imgSrc } = card;
+    return (
+      <Card
+        key={id}
+        title={title}
+        imgSrc={imgSrc}
+        description={description}
+        borderTopColor={borderTopColor}
+      />
+    );
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="container">
+      <header>
+        <h3>Reliable, efficient delivery</h3>
+        <h4>Powered by Technology</h4>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Our Artificial Intelligence powered tools use millions of project data
+          points to ensure that your project is successful
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <div className="card-container">{cards}</div>
     </div>
   );
 }
